@@ -1,0 +1,92 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Custom styles for tables */
+table {
+    border-collapse: collapse; /* Ensure borders are collapsed */
+    width: 100%; /* Full width */
+}
+
+/* Table header and cell styling */
+th, td {
+    padding: 12px; /* Add padding to cells */
+    text-align: left; /* Align text to the left */
+}
+
+/* Table header background and text color */
+thead th {
+    background-color: #343a40; /* Dark header for contrast */
+    color: white; /* White text for visibility */
+}
+
+/* Hover effect for table rows */
+tr:hover {
+    background-color: #f1f1f1; /* Light gray background on hover */
+}
+
+/* Add margin to the container for better spacing */
+.container {
+    margin-top: 20px; /* Space from the top */
+}
+
+/* Style for buttons */
+.btn {
+    margin-right: 10px; /* Space between buttons */
+}
+
+/* Style for no results message */
+.text-center {
+    font-weight: bold; /* Make the message bold */
+    color: #777; /* Slightly lighter color for the message */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    th, td {
+        padding: 8px; /* Reduce padding on smaller screens */
+    }
+
+    .container {
+        margin-top: 10px; /* Reduce top margin on smaller screens */
+    }
+}

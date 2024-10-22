@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}Books List{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Books</h1>
+
+    <!-- Table for displaying books -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date Published</th>
+                    <th>Authors</th>
+                    <th>Publisher</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.date }}</td>
+                    <td>
+                        {% for author in book.authors.all %}
+                            {{ author.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ book.publisher.name }}</td>  <!-- Changed from .all to direct access -->
+                    <td>
+                        <form action="{% url 'buy_book' book.title %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Buy</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No books found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-4">       
+        <a href="{% url 'Authors' %}" class="btn btn-secondary">View Authors</a>
+        <a href="{% url 'Publisher' %}" class="btn btn-secondary">View Publishers</a>
+    </div>
+</div>
+{% endblock %}

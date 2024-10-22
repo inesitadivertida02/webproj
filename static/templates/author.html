@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Authors List{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Search for Author</h1>
+
+    <!-- Search Form -->
+    <form method="GET" action="{% url 'Authors' %}" class="form-inline mb-4">
+        <input type="text" name="query" class="form-control mr-2" placeholder="Search for author..." value="{{ request.GET.query }}">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <!-- If an author is found, redirect to their books page -->
+    {% if author %}
+        <div class="alert alert-success">
+            Found author: <a href="{% url 'author_books' author.name|slugify %}">{{ author.name }}</a>
+        </div>
+    {% elif query %}
+        <div class="alert alert-danger">No authors found with the name "{{ query }}"</div>
+    {% endif %}
+    
+    <div class="mt-4">
+        <a href="{% url 'Publisher' %}" class="btn btn-secondary">View Publishers</a>
+        <a href="{% url 'Books' %}" class="btn btn-secondary">View Books</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}Publishers List{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Publishers</h1>
+
+    <!-- Table for displaying publishers -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for publisher in publishers %}
+                <tr>
+                    <td>{{ publisher.name }}</td>
+                    <td>{{ publisher.city }}</td>
+                    <td>{{ publisher.country }}</td>
+                    <td>
+                        <a href="{{ publisher.website }}" target="_blank">{{ publisher.website }}</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No publishers found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'Authors' %}" class="btn btn-secondary">View Authors</a>
+        <a href="{% url 'Books' %}" class="btn btn-secondary">View Books</a>
+    </div>
+</div>
+{% endblock %}
